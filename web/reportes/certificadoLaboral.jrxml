@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef9a9db6-f664-4ab2-b285-b6eac0ea2108">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT SYSDATE() AS FECHA,id.ID_TIPO_ID,e.NUM_IDE,CONCAT(e.NOMBRES,' ',e.APELLIDO_1,' ',e.APELLIDO_2) NOMBRES, te.TIPO_EMPLE,c.NOMBRE,tc.TIPO_CONTRATO,e.SALARIO,e.ID_EMPLE,id.TIPO_IDEN 
+FROM emple e 
+inner join TIPO_IDEN id on e.TIPO_IDEN_ID_TIPO_ID= id.ID_TIPO_ID 
+inner join tipo_emple te on e.ID_TIPO_EMPLE = te.ID_TIPO_EMPLE 
+inner join cargo c on e.ID_CARGO = c.ID_CARGO 
+inner join tipo_cont tc on e.ID_CONTRA = tc.ID_CONTRA
+inner join usuarios u on u.name=e.NUM_IDE
+inner join usuario_sesion us on us.ID_USUARIO=u.id_usuario]]>
+	</queryString>
+	<field name="FECHA" class="java.sql.Timestamp"/>
+	<field name="ID_TIPO_ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NUM_IDE" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMBRES" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TIPO_EMPLE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMBRE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TIPO_CONTRATO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SALARIO" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ID_EMPLE" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TIPO_IDEN" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="127" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="48" y="50" width="189" height="20" uuid="09d67344-0a2c-44ba-a22c-477187abb7c2"/>
+				<textElement>
+					<font fontName="Adobe Arabic" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="50" width="48" height="20" uuid="71fe7158-afa2-4c69-b7d6-5bfac4343af0"/>
+				<textElement>
+					<font fontName="Adobe Arabic" size="8"/>
+				</textElement>
+				<text><![CDATA[Medellín,]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="555" height="35" uuid="5fe73570-60ec-4890-9a76-34f9c6809fcb"/>
+				<textElement textAlignment="Right">
+					<font fontName="Adobe Arabic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LA UNIDAD DE GESTION HUMANA DE PIXEL BRANT
+NIT 800.167.494-4]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="59" y="30" width="100" height="20" uuid="84c0a8f5-c002-45a1-8a6c-04ec6f6fb250"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Adobe Arabic" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="80" splitType="Stretch">
+			<textField pattern="¤ #,##0.000">
+				<reportElement x="0" y="0" width="555" height="80" uuid="38838cdd-e8e6-485a-b03c-25e8fa444c09"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Adobe Arabic"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Que: " + $F{NOMBRES} + " identificado con "+ $F{TIPO_IDEN} + " n°"  + $F{NUM_IDE} + ", labora en nuestra entidad desempeñandose actualmente como " + $F{NOMBRE} + " con un tipo de contrato " + $F{TIPO_CONTRATO}+ " ."]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

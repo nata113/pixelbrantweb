@@ -1,0 +1,306 @@
+body {
+    font-family: 'caviardreamsregular';
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'caviardreamsregular';
+    font-weight: 800 !important;
+}
+
+.logo{
+    height: 80px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+
+}
+.btn-xl {
+    text-transform: uppercase;
+    padding: 1.5rem 3rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+.bg-black {
+    background-color: #000 !important;
+}
+
+.rounded-pill {
+    border-radius: 5rem;
+}
+
+.navbar-custom {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba(203, 67, 53);
+}
+
+.navbar-custom .navbar-brand {
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+}
+
+.navbar-custom .navbar-nav .nav-item .nav-link {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+.nav-link{
+    color: #ffffff !important;
+    font-family: 'Lato' !important;
+}
+
+.nav-link:hover{
+    color: #bd0760 !important;
+}
+header.masthead {
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(7rem + 72px);
+    padding-bottom: 7rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+
+}
+
+.form-contacto {
+    width: 400px !important;
+    opacity: 0,3;
+    background-color: rgb(0, 0, 0, 0.9);
+    color: #ffffff;
+}
+
+.title-contacto{
+    text-align: center;
+    color: #bd0760;
+}
+
+.submit{
+    background-color: #bd0760;
+    color: #ffffff;
+}
+#bgVideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+}
+
+header.masthead .masthead-content {
+    z-index: 1;
+    position: relative;
+}
+
+header.masthead .masthead-content .masthead-heading {
+    font-size: 4rem;
+}
+
+header.masthead .masthead-content .masthead-subheading {
+    font-size: 2rem;
+}
+
+header.masthead .bg-circle {
+    z-index: 0;
+    position: absolute;
+    border-radius: 100%;
+    background: linear-gradient(0deg, #ee0979 0%, #ff6a00 100%);
+}
+
+header.masthead .bg-circle-1 {
+    height: 90rem;
+    width: 90rem;
+    bottom: -55rem;
+    left: -55rem;
+}
+
+header.masthead .bg-circle-2 {
+    height: 50rem;
+    width: 50rem;
+    top: -25rem;
+    right: -25rem;
+}
+
+header.masthead .bg-circle-3 {
+    height: 20rem;
+    width: 20rem;
+    bottom: -10rem;
+    right: 5%;
+}
+
+header.masthead .bg-circle-4 {
+    height: 30rem;
+    width: 30rem;
+    top: -5rem;
+    right: 35%;
+}
+
+@media (min-width: 992px) {
+    header.masthead {
+        padding-top: calc(10rem + 55px);
+        padding-bottom: 10rem;
+    }
+    header.masthead .masthead-content .masthead-heading {
+        font-size: 6rem;
+    }
+    header.masthead .masthead-content .masthead-subheading {
+        font-size: 4rem;
+    }
+}
+
+.bg-primary {
+    background-color: #bd0760 !important;
+
+}
+
+.btn-primary {
+    background-color: #E74C3C;
+    border: 2px solid #E74C3C !important;
+    font-family: 'Catamaran';
+}
+
+.btn-primary:active, .btn-primary:focus, .btn-primary:hover, .btn-secondary {
+    background-color: #D86A5C !important;
+    border-color: #E74C3C !important;
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
+}
+
+.btn-secondary {
+    background-color: transparent !important;
+    border: 2px solid #ffffff !important;
+    font-family: 'Catamaran';
+}
+
+.btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
+    border-color: #ffffff !important;
+}
+
+input[type=search] {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    background:transparent;
+    border: 0px;
+    border-bottom: 2px solid #bd0760 ;
+    color: #ffffff;
+    padding: 0.5rem 0;
+    width: 0;
+    outline: none;
+}
+
+input[type=search].show {
+    background:transparent;
+    padding: 0.5rem;
+    width: 20rem;
+}
+
+.form-contacto{
+    width: 800px;
+    position: absolute !important;
+    right: 0 !important;
+}
+
+.section-title{
+    font-family: Lato !important; 
+}
+
+.section-header {
+    border-bottom: 1px solid #dedede;
+}
+
+.card-text.justified {
+    text-align: justify;
+}
+
+.page-link {
+    color: #bd0760 !important;
+}
+
+.page-item.disabled > .page-link {
+    color: #898989 !important;
+}
+
+.page-item.active > .page-link {
+    background-color:  #bd0760 !important;
+    border-color:  #97034b !important;
+    color: #ffffff !important;
+}
+
+.detail-item {
+    cursor: pointer;
+}
+
+#content{
+    background: url(/img/04.jpg) no-repeat;
+    background: url(/img/04.jpg)
+}
+
+#container{
+    background: url(../img/04.jpg) no-repeat;
+    z-index: 1;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 60%;
+}
+
+th, td {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    text-align: left;
+    padding: 10px;
+}
+
+th{   
+    background-color: #E74C3C;
+    font-size: 14px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2
+}
+
+.contenedor{
+    align-items: center;
+}
+img.pequeña{
+    width: 40px; height: 40px;
+}
+
+
+
+.btn-warning {
+    color: #212529;
+    background-color: #0d0000;
+    border-color: #C6C6C6;
+    font-family: 'Catamaran';
+   
+}
+
+.btn-warning:hover {
+background-color: #E74C3C;
+}

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="500" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ef012c8-97bb-41fb-8232-008f91acc93b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="164"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#DC143C">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFCC">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="4edc2e01-b619-4f6b-9089-0284de19c50f"/>
+	<subDataset name="Table Dataset 2" uuid="360fe9c0-c4c3-4f2c-b82c-9dc4043bcded"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\USUARIO\\Documents\\2021\\NETBEAN\\PIXEL REGISTRO ACTIVIDAD\\PIXELBRAND\\web\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="EMPRESA" class="java.lang.String"/>
+	<parameter name="MES" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT DISTINCT C.NOMBRE,C.RAZON_SOCIAL, C.NIT,DATE_ADD(NOW(),INTERVAL 15 DAY) dias, C.TELEFONO
+FROM clieser_acti CA
+INNER JOIN clien_servi CS ON CS.ID_CLIEN_SERVI=CA.ID_CLIEN_SERVI
+INNER JOIN cliente C ON C.ID_CLIEN=CS.ID_CLIEN 
+AND CS.ID_CLIEN_SERVI=$P{EMPRESA}]]>
+	</queryString>
+	<field name="NOMBRE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RAZON_SOCIAL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NIT" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dias" class="java.sql.Timestamp"/>
+	<field name="TELEFONO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="34" width="102" height="20" uuid="2c82a9a5-46ad-43a6-b398-065cedf7fd8a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pixel Brant ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="52" y="14" width="87" height="74" uuid="d134fa14-fd5b-45bc-b356-9f78903958a1"/>
+				<imageExpression><![CDATA["C:\\Users\\USUARIO\\Documents\\2021\\NETBEAN\\PIXEL REGISTRO ACTIVIDAD\\PIXELBRAND\\web\\img\\logopix.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="210" y="54" width="102" height="20" uuid="71644ca3-934a-4b6e-b610-09e0a9e983d7"/>
+				<text><![CDATA[Medellin, Antioquia]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="388" y="14" width="153" height="77" forecolor="#FF3333" uuid="9a64d9e8-8d5e-4f98-9199-1756dca2351b"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="388" y="34" width="153" height="20" uuid="d0b90c2a-29cb-49d4-b809-d1ca9e8b42a4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Factura Electronica de Venta]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="100" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="13" y="1" width="312" height="88" forecolor="#FF3300" uuid="f49f3019-ef7e-4e54-b7f5-8995421dbe38"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="16" y="1" width="146" height="20" uuid="a37b3dd1-b98a-41f1-8892-be2594265861"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos de Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="21" width="36" height="20" uuid="536d555b-0ebb-494f-9ef8-b95cec7c944a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[NIT:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="52" y="21" width="122" height="20" uuid="adad95bf-9428-4e57-ba5c-3277298f1059"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NIT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="41" width="86" height="20" uuid="772d2c61-3cde-4437-a871-b13cbd0d6662"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Razón Social:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="102" y="41" width="202" height="20" uuid="af9b1208-5d1d-4862-bdaf-e591225c4ecc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RAZON_SOCIAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="61" width="66" height="20" uuid="d96d595e-dbaf-4080-822b-ca14cbc2c2a9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Teléfono : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="61" width="129" height="20" uuid="906fdcd6-0c73-4c78-8d96-855027bc072a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TELEFONO}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement x="351" y="1" width="190" height="88" forecolor="#FF3333" uuid="467a9857-77a2-4bdd-87d9-32718951af35"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="351" y="71" width="190" height="18" uuid="58a553ad-ff09-4260-b468-92951e4114c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fecha límite de Pago]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="351" y="21" width="190" height="40" forecolor="#FF0000" uuid="c301f30f-71ba-4019-8df5-fa94310a5a78"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dias}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="2fbc91bf-3707-4424-88dd-a1d059b98c91"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Resumen de cobros]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="128" splitType="Stretch">
+			<subreport>
+				<reportElement x="112" y="0" width="276" height="128" uuid="fef6333f-148b-447b-8ab3-5c92011989f2"/>
+				<subreportParameter name="EMPRESA">
+					<subreportParameterExpression><![CDATA[$P{EMPRESA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MES">
+					<subreportParameterExpression><![CDATA[$P{MES}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="19" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="19" backcolor="#000000" uuid="2c144b56-f856-4756-8d30-11265b014441"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="19" forecolor="#FFFFFF" uuid="34cc19a9-e0b1-4b8a-b1c3-f2d3ee6e2c97"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Copyright &copy; Pixel Brant 2021]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

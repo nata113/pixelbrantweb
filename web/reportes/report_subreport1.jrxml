@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a88ea863-3a2d-4c75-95ad-4ac06c792ed9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT C.NOMBRE,C.RAZON_SOCIAL, C.NIT,S.NOMBRE_SERVICIO, (CS.VALOR_HORA*CA.NUMERO_HORAS) VALOR,
+MONTHNAME(CA.FECHA_INICIO) FROM clieser_acti CA
+INNER JOIN clien_servi CS ON CS.ID_CLIEN_SERVI=CA.ID_CLIEN_SERVI
+INNER JOIN cliente C ON C.ID_CLIEN=CS.ID_CLIEN 
+INNER JOIN servicios S ON S.ID_SERVICIO=CS.ID_SERVICIO]]>
+	</queryString>
+	<field name="NOMBRE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RAZON_SOCIAL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NIT" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMBRE_SERVICIO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="VALOR" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MONTHNAME(CA.FECHA_INICIO)" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="83" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="138" height="20" uuid="8bc714c5-ec7a-4ee0-86ad-3da9dc760ec5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Adobe Arabic" size="10"/>
+				</textElement>
+				<text><![CDATA[Resumen de cobros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="43" width="174" height="20" uuid="91f7e9ea-6f43-4361-9d39-dbd9b33e376c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Adobe Arabic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Servicio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="89" y="63" width="174" height="20" uuid="58e31f42-2097-4af2-83b6-fdf7827a25d2"/>
+				<textElement>
+					<font fontName="Adobe Arabic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMBRE_SERVICIO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="263" y="43" width="122" height="20" uuid="67006f30-8902-4270-aea6-6e094c905a63"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Adobe Arabic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="263" y="63" width="122" height="20" uuid="f108c722-2c1a-46c0-87f7-bec4c249f3af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Adobe Arabic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

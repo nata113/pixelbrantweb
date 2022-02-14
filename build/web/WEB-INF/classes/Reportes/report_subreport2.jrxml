@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_subreport2" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="204127cf-4895-4f2c-ac85-9bf81c4da255">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="EMPRESA" class="java.lang.String"/>
+	<parameter name="MES" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT C.NOMBRE,C.RAZON_SOCIAL, C.NIT,S.NOMBRE_SERVICIO, CS.VALOR_HORA,(SUM(CA.NUMERO_HORAS)*cs.VALOR_HORA) TOTAL 
+FROM clieser_acti CA
+INNER JOIN clien_servi CS ON CS.ID_CLIEN_SERVI=CA.ID_CLIEN_SERVI
+INNER JOIN cliente C ON C.ID_CLIEN=CS.ID_CLIEN 
+INNER JOIN servicios S ON S.ID_SERVICIO=CS.ID_SERVICIO
+AND CS.ID_CLIEN_SERVI=$P{EMPRESA}
+AND MONTH(CA.FECHA_INICIO)=$P{MES}
+GROUP BY CS.ID_CLIEN_SERVI]]>
+	</queryString>
+	<field name="NOMBRE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RAZON_SOCIAL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NIT" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMBRE_SERVICIO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="VALOR_HORA" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TOTAL" class="java.lang.Double"/>
+	<variable name="SUMAVALOR" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{TOTAL}]]></variableExpression>
+	</variable>
+	<variable name="SUMVH" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="138" height="20" uuid="8bc714c5-ec7a-4ee0-86ad-3da9dc760ec5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Adobe Arabic" size="10"/>
+				</textElement>
+				<text><![CDATA[Resumen de cobros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="138" height="20" uuid="8bc714c5-ec7a-4ee0-86ad-3da9dc760ec5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Adobe Arabic" size="10"/>
+				</textElement>
+				<text><![CDATA[Resumen de cobros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="29" width="192" height="20" uuid="42eab58b-07bf-48b0-aec6-dc58f16ddfbd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Adobe Arabic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="29" width="116" height="20" uuid="720beba6-430c-4d1b-bbb8-321cae7bb2ac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Adobe Arabic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor	]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="138" y="0" width="192" height="20" uuid="6baf3c54-5393-4bcb-a0a7-3c6b483ed66c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Adobe Arabic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMBRE_SERVICIO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0">
+				<reportElement x="378" y="0" width="116" height="20" uuid="c94f9065-fd35-4665-9a4d-a9256b4da6ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Adobe Arabic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="50">
+			<staticText>
+				<reportElement x="224" y="19" width="124" height="20" uuid="06c00b30-15a1-46b3-b8e2-17800d20c2a5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Adobe Arabic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL A PAGAR]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0">
+				<reportElement x="378" y="19" width="116" height="20" uuid="e4de212b-bebe-4f51-895d-4fa5fa71efda"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Adobe Arabic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUMAVALOR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
